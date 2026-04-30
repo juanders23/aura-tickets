@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compra Confirmada</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='confirmacion.css') }}">
+</head>
+
+<body>
+
+<div class="confirm-container">
+
+  <!-- CHECK ANIMADO -->
+  <div class="check-wrapper">
+    <div class="check-circle">
+      <svg viewBox="0 0 52 52">
+        <path d="M14 27 L22 35 L38 19"></path>
+      </svg>
+    </div>
+  </div>
+
+  <!-- TEXTO -->
+  <h1>Pago confirmado</h1>
+  <p class="sub">
+    Tu compra fue procesada correctamente
+  </p>
+
+  <!-- CARD RESUMEN -->
+  <div class="card">
+
+    <div class="row">
+      <span>Cliente</span>
+      <strong>{{ nombre }}</strong>
+    </div>
+
+    <div class="row">
+      <span>Correo</span>
+      <strong>{{ correo }}</strong>
+    </div>
+
+    <div class="row">
+      <span>Evento</span>
+      <strong>Estadio Nacional</strong>
+    </div>
+
+    <div class="row">
+      <span>Zona</span>
+      <strong>{{ zona }}</strong>
+    </div>
+
+    <div class="row">
+      <span>Cantidad</span>
+      <strong>{{ cantidad }}</strong>
+    </div>
+
+    <div class="row">
+      <span>Total pagado</span>
+      <strong class="price">${{ total }}</strong>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="info">
+      📩 Tus entradas fueron enviadas a <b>{{ correo }}</b>
+    </p>
+
+  </div>
+
+  <!-- BOTONES -->
+  <div class="actions">
+    <a href="/" class="btn ghost">Volver</a>
+    <a href="{{ url_for('descargar_entradas', tx_id=tx_id) }}" class="btn primary">Descargar entradas</a>
+  </div>
+
+</div>
+
+</body>
+</html>

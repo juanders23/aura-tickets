@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aura Tickets - Compra entradas para eventos de forma segura">
+    <meta name="theme-color" content="#0066cc">
+    <title>Entradas | Aura Tickets 💫</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- ================= SKIP TO CONTENT ================= -->
+    <a href="#main-content" class="skip-to-content">Saltar al contenido principal</a>
+
+    <!-- ================= NAVIGATION ================= -->
+    <!-- CORREGIDO: solo un <header> de página -->
+    <header class="header-top" role="banner">
+        <div class="container-header">
+            <div class="logo-section">
+                <a href="/" class="logo" aria-label="Aura Tickets - Inicio">
+                    <i data-lucide="ticket" aria-hidden="true"></i>
+                    <span class="logo-text">Aura Tickets</span>
+                </a>
+            </div>
+
+            <nav class="menu" role="navigation" aria-label="Navegación principal">
+                <a href="#support" class="nav-link">
+                    <i data-lucide="headphones" aria-hidden="true"></i>
+                    <span>Soporte</span>
+                </a>
+                <a href="#login" class="nav-link">
+                    <i data-lucide="log-in" aria-hidden="true"></i>
+                    <span>Ingresar</span>
+                </a>
+            </nav>
+        </div>
+        <div class="progress-bar" aria-hidden="true"></div>
+    </header>
+
+    <!-- ================= EVENT HERO ================= -->
+    <!-- CORREGIDO: era <header>, ahora es <section> -->
+    <section class="header-evento fade-up" aria-label="Información del evento">
+        <div class="evento-backdrop" aria-hidden="true"></div>
+
+        <div class="evento-container">
+            <div class="evento-img-wrapper">
+                <div class="evento-img">
+                </div>
+                <div class="evento-badge">EN VIVO</div>
+            </div>
+
+            <div class="evento-details">
+                <h1 class="evento-title">Yandel Sinfónico</h1>
+
+                <div class="evento-meta">
+                    <div class="meta-item">
+                        <i data-lucide="calendar" aria-hidden="true"></i>
+                        <span>20 Junio 2026</span>
+                    </div>
+                    <div class="meta-item separator" aria-hidden="true">•</div>
+                    <div class="meta-item">
+                        <i data-lucide="clock" aria-hidden="true"></i>
+                        <span>8:00 PM</span>
+                    </div>
+                    <div class="meta-item separator" aria-hidden="true">•</div>
+                    <div class="meta-item">
+                        <i data-lucide="map-pin" aria-hidden="true"></i>
+                        <span>Estadio Nacional</span>
+                    </div>
+                </div>
+
+                <p class="evento-description">
+                    Vive una experiencia inolvidable en el corazón de la ciudad. Disfruta de la mejor música en vivo con la comodidad y seguridad que mereces.
+                </p>
+
+                <div class="evento-stats">
+                    <div class="stat">
+                        <span class="stat-value">5000+</span>
+                        <span class="stat-label">Entradas vendidas</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">98%</span>
+                        <span class="stat-label">Ocupación</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">⭐ 4.9</span>
+                        <span class="stat-label">Calificación</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="container" id="main-content" role="main">
+
+        <!-- ================= SEATING MAP ================= -->
+        <section class="mapa-card fade-up" aria-labelledby="mapa-title">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title" id="mapa-title">
+                        <i data-lucide="map-pin" aria-hidden="true"></i>
+                        Selecciona tu zona
+                    </h2>
+                    <p class="section-subtitle">Elige el mejor lugar para disfrutar del evento</p>
+                </div>
+            </div>
+
+            <div class="mapa-container">
+                <div class="mapa" role="region" aria-label="Mapa de asientos">
+                    <!-- Stage -->
+                    <div class="stage-wrapper">
+                        <div class="stage-glow" aria-hidden="true"></div>
+                        <div class="stage">
+                            <i data-lucide="radio" aria-hidden="true"></i>
+                            <span>ESCENARIO</span>
+                        </div>
+                    </div>
+
+                    <!-- Zones -->
+                    <div class="zonas" role="radiogroup" aria-label="Selecciona una zona">
+
+                        <!-- Mesa Lounge -->
+                        <div class="zona-section lounge-section">
+                            <div class="zona-label">MESA LOUNGE</div>
+                            <div class="zona lounge"
+                                 data-zona="Mesa Lounge"
+                                 data-precio="10730"
+                                 role="radio"
+                                 aria-checked="false"
+                                 tabindex="0">
+                                <div class="zona-content">
+                                    <i data-lucide="crown" aria-hidden="true"></i>
+                                    <span class="zona-name">MESA LOUNGE</span>
+                                    <span class="zona-price">C$10,730</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mesa Platinum -->
+                        <div class="zona-section platinum-section">
+                            <div class="zona-label">MESA PLATINUM</div>
+                            <div class="zona platinum"
+                                 data-zona="Mesa Platinum"
+                                 data-precio="5550"
+                                 role="radio"
+                                 aria-checked="false"
+                                 tabindex="0">
+                                <div class="zona-content">
+                                    <i data-lucide="gem" aria-hidden="true"></i>
+                                    <span class="zona-name">MESA PLATINUM</span>
+                                    <span class="zona-price">C$5,550</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sillas VIP -->
+                        <div class="zona-section vip-row">
+                            <div class="zona-label">SILLAS VIP</div>
+                            <div class="zonas-row">
+                                <div class="zona vip"
+                                     data-zona="Silla VIP"
+                                     data-precio="4810"
+                                     role="radio"
+                                     aria-checked="false"
+                                     tabindex="0">
+                                    <div class="zona-content">
+                                        <i data-lucide="star" aria-hidden="true"></i>
+                                        <span class="zona-name">SILLA VIP</span>
+                                        <span class="zona-price">C$4,810</span>
+                                    </div>
+                                </div>
+                                <div class="zona vip"
+                                     data-zona="Silla VIP"
+                                     data-precio="4810"
+                                     role="radio"
+                                     aria-checked="false"
+                                     tabindex="0">
+                                    <div class="zona-content">
+                                        <i data-lucide="star" aria-hidden="true"></i>
+                                        <span class="zona-name">SILLA VIP</span>
+                                        <span class="zona-price">C$4,810</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grada Central -->
+                        <div class="zona-section central-row">
+                            <div class="zona-label">GRADA CENTRAL</div>
+                            <div class="zona central"
+                                 data-zona="Gradas Central"
+                                 data-precio="2035"
+                                 role="radio"
+                                 aria-checked="false"
+                                 tabindex="0">
+                                <div class="zona-content">
+                                    <i data-lucide="users" aria-hidden="true"></i>
+                                    <span class="zona-name">GRADA CENTRAL</span>
+                                    <span class="zona-price">C$2,035</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gradas Laterales -->
+                        <div class="zona-section lateral-row">
+                            <div class="zona-label">GRADAS LATERALES</div>
+                            <div class="zonas-row">
+                                <div class="zona lateral"
+                                     data-zona="Gradas Laterales"
+                                     data-precio="1480"
+                                     role="radio"
+                                     aria-checked="false"
+                                     tabindex="0">
+                                    <div class="zona-content">
+                                        <i data-lucide="users" aria-hidden="true"></i>
+                                        <span class="zona-name">GRADA LATERAL</span>
+                                        <span class="zona-price">C$1,480</span>
+                                    </div>
+                                </div>
+                                <div class="zona lateral"
+                                     data-zona="Gradas Laterales"
+                                     data-precio="1480"
+                                     role="radio"
+                                     aria-checked="false"
+                                     tabindex="0">
+                                    <div class="zona-content">
+                                        <i data-lucide="users" aria-hidden="true"></i>
+                                        <span class="zona-name">GRADA LATERAL</span>
+                                        <span class="zona-price">C$1,480</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Meet and Greet -->
+                        <div class="zona-section meet-section">
+                            <div class="zona-label">MEET AND GREET</div>
+                            <div class="zona meet"
+                                 data-zona="Meet and Greet"
+                                 data-precio="5920"
+                                 role="radio"
+                                 aria-checked="false"
+                                 tabindex="0">
+                                <div class="zona-content">
+                                    <i data-lucide="badge-check" aria-hidden="true"></i>
+                                    <span class="zona-name">MEET AND GREET</span>
+                                    <span class="zona-price">C$5,920</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <aside class="seating-legend" aria-label="Leyenda de zonas">
+                    <h3 class="legend-title">Guía de precios</h3>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-color lounge"></div>
+                            <div class="legend-text">
+                                <span class="legend-name">Mesa Lounge</span>
+                                <span class="legend-price">C$10,730</span>
+                            </div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color platinum"></div>
+                            <div class="legend-text">
+                                <span class="legend-name">Mesa Platinum</span>
+                                <span class="legend-price">C$5,550</span>
+                            </div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color vip"></div>
+                            <div class="legend-text">
+                                <span class="legend-name">Silla VIP</span>
+                                <span class="legend-price">C$4,810</span>
+                            </div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color central"></div>
+                            <div class="legend-text">
+                                <span class="legend-name">Gradas Central</span>
+                                <span class="legend-price">C$2,035</span>
+                            </div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color lateral"></div>
+                            <div class="legend-text">
+                                <span class="legend-name">Gradas Laterales</span>
+                                <span class="legend-price">C$1,480</span>
+                            </div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color meet"></div>
+                            <div class="legend-text">
+                                <span class="legend-name">Meet and Greet</span>
+                                <span class="legend-price">C$5,920</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="legend-note">
+                        <i data-lucide="alert-circle" aria-hidden="true"></i>
+                        <p>Precios con impuestos incluidos</p>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="mapa-info" role="complementary" aria-live="polite">
+                <i data-lucide="lightbulb" aria-hidden="true"></i>
+                <p>Haz clic en una zona para seleccionar tus entradas</p>
+            </div>
+        </section>
+
+        <!-- ================= SIDEBAR PANEL ================= -->
+        <aside class="panel fade-up" role="complementary" aria-label="Resumen de compra">
+
+            <!-- Quick Summary -->
+            <div class="card quick-summary">
+                <div class="summary-icon">
+                    <i data-lucide="shopping-cart" aria-hidden="true"></i>
+                </div>
+                <div class="summary-text">
+                    <span class="summary-label">Tu compra</span>
+                    <span class="summary-value">$<span id="total-quick">0</span></span>
+                </div>
+            </div>
+
+            <!-- Cantidad -->
+            <div class="card quantity-card">
+                <label for="cantidad" class="card-title">
+                    <i data-lucide="users" aria-hidden="true"></i>
+                    <span>Cantidad de entradas</span>
+                </label>
+                <select id="cantidad" aria-label="Selecciona cantidad de entradas">
+                    <option value="1">1 entrada</option>
+                    <option value="2">2 entradas</option>
+                    <option value="3">3 entradas</option>
+                    <option value="4">4 entradas</option>
+                    <option value="5">5 entradas</option>
+                </select>
+                <small class="help-text">Máximo 5 entradas por compra</small>
+            </div>
+
+            <!-- Alert -->
+            <div class="card alert-info">
+                <div class="alert-icon">
+                    <i data-lucide="check-circle" aria-hidden="true"></i>
+                </div>
+                <div class="alert-content">
+                    <span class="alert-title">Compra segura</span>
+                    <span class="alert-text">Precios finales con impuestos incluidos</span>
+                </div>
+            </div>
+
+            <!-- Precios -->
+            <div class="card zone-prices">
+                <h3 class="card-title">
+                    <i data-lucide="tag" aria-hidden="true"></i>
+                    <span>Precios por zona</span>
+                </h3>
+                <div class="price-list">
+                    <div class="price-item" data-zona="Mesa Lounge" data-precio="10730" role="button" tabindex="0">
+                        <span class="price-name">Mesa Lounge</span>
+                        <span class="price">C$10,730</span>
+                    </div>
+                    <div class="price-item" data-zona="Mesa Platinum" data-precio="5550" role="button" tabindex="0">
+                        <span class="price-name">Mesa Platinum</span>
+                        <span class="price">C$5,550</span>
+                    </div>
+                    <div class="price-item" data-zona="Silla VIP" data-precio="4810" role="button" tabindex="0">
+                        <span class="price-name">Silla VIP</span>
+                        <span class="price">C$4,810</span>
+                    </div>
+                    <div class="price-item" data-zona="Gradas Central" data-precio="2035" role="button" tabindex="0">
+                        <span class="price-name">Gradas Central</span>
+                        <span class="price">C$2,035</span>
+                    </div>
+                    <div class="price-item" data-zona="Gradas Laterales" data-precio="1480" role="button" tabindex="0">
+                        <span class="price-name">Gradas Laterales</span>
+                        <span class="price">C$1,480</span>
+                    </div>
+                    <div class="price-item" data-zona="Meet and Greet" data-precio="5920" role="button" tabindex="0">
+                        <span class="price-name">Meet and Greet</span>
+                        <span class="price">C$5,920</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumen detallado -->
+            <div class="card resumen" role="region" aria-label="Resumen de pago">
+                <h3 class="card-title">
+                    <i data-lucide="receipt" aria-hidden="true"></i>
+                    <span>Resumen de compra</span>
+                </h3>
+                <div class="summary-breakdown">
+                    <div class="summary-item">
+                        <span class="summary-label">Zona</span>
+                        <span class="summary-value" id="zona-summary">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Cantidad</span>
+                        <span class="summary-value"><span id="cant">1</span> entrada(s)</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Precio unitario</span>
+                        <span class="summary-value">$<span id="precio">0</span></span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-item">
+                        <span class="summary-label">Subtotal</span>
+                        <span class="summary-value">$<span id="subtotal">0</span></span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Impuesto (19%)</span>
+                        <span class="summary-value">$<span id="impuesto">0</span></span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-total">
+                        <h4>Total a pagar</h4>
+                        <span class="total-amount">$<span id="total">0</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= FORMULARIO COMPRADOR ================= -->
+            <!-- CORREGIDO: solo nombre + email, sin teléfono aquí -->
+            <div class="card form-card">
+                <h3 class="card-title">
+                    <i data-lucide="user-check" aria-hidden="true"></i>
+                    <span>Información del comprador</span>
+                </h3>
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input id="nombre"
+                               type="text"
+                               class="form-input"
+                               autocomplete="name"
+                               aria-label="Nombre completo"
+                               placeholder=" "
+                               required>
+                        <label for="nombre">Nombre completo</label>
+                        <span class="error-message" id="error-nombre" role="alert"></span>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <input id="correo"
+                               type="email"
+                               class="form-input"
+                               autocomplete="email"
+                               aria-label="Correo electrónico"
+                               placeholder=" "
+                               required>
+                        <label for="correo">Correo electrónico</label>
+                        <span class="error-message" id="error-correo" role="alert"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security badge -->
+            <div class="security-badge">
+                <i data-lucide="shield-check" aria-hidden="true"></i>
+                <div class="badge-content">
+                    <span class="badge-label">Pago 100% seguro</span>
+                    <span class="badge-text">Encriptación SSL</span>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <button id="btnComprar"
+                    class="btn-primary btn-lg btn-comprar"
+                    onclick="window.comprar()"
+                    disabled
+                    aria-label="Continuar con la compra">
+                <i data-lucide="arrow-right" aria-hidden="true"></i>
+                <span>Continuar compra</span>
+            </button>
+            <small class="help-text">Selecciona una zona y completa tus datos</small>
+
+        </aside>
+
+    </main>
+
+    <!-- ================= LOADER ================= -->
+    <div id="loader" class="loader-overlay" role="status" aria-hidden="true">
+        <div class="loader-content">
+            <div class="loader"></div>
+            <p class="loader-text">Procesando...</p>
+        </div>
+    </div>
+
+    <!-- ================= MODAL: CONFIRMACIÓN DE COMPRA ================= -->
+    <div id="modalCompra"
+         class="modal"
+         role="dialog"
+         aria-labelledby="modalCompraTitle"
+         aria-hidden="true"
+         aria-modal="true">
+        <div class="modal-overlay" onclick="window.cerrarModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="window.cerrarModal()" aria-label="Cerrar">
+                <i data-lucide="x" aria-hidden="true"></i>
+            </button>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i data-lucide="check-square" aria-hidden="true"></i>
+                </div>
+                <h2 id="modalCompraTitle">Confirma tu compra</h2>
+            </div>
+            <div class="modal-info">
+                <div class="info-item">
+                    <i data-lucide="map-pin" aria-hidden="true"></i>
+                    <div class="info-content">
+                        <span class="info-label">Zona seleccionada</span>
+                        <b class="info-value" id="mZona">-</b>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i data-lucide="users" aria-hidden="true"></i>
+                    <div class="info-content">
+                        <span class="info-label">Cantidad de entradas</span>
+                        <b class="info-value" id="mCantidad">0</b>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i data-lucide="dollar-sign" aria-hidden="true"></i>
+                    <div class="info-content">
+                        <span class="info-label">Total a pagar</span>
+                        <b class="info-value">$<span id="mTotal">0</span></b>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn-secondary" onclick="window.cerrarModal()">Cancelar</button>
+                <button class="btn-primary" onclick="window.confirmarCompra()">
+                    <i data-lucide="check" aria-hidden="true"></i>
+                    Confirmar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL: PAGO ================= -->
+    <div id="modalFactura"
+         class="modal"
+         role="dialog"
+         aria-labelledby="modalFacturaTitle"
+         aria-hidden="true"
+         aria-modal="true">
+        <div class="modal-overlay" onclick="window.cerrarFactura()"></div>
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="window.cerrarFactura()" aria-label="Cerrar">
+                <i data-lucide="x" aria-hidden="true"></i>
+            </button>
+
+            <div class="modal-header">
+                <div class="modal-icon payment">
+                    <i data-lucide="credit-card" aria-hidden="true"></i>
+                </div>
+                <h2 id="modalFacturaTitle">Información de pago</h2>
+                <p class="modal-subtitle">Completa los datos para procesar tu pago</p>
+            </div>
+
+            <form id="paymentForm" class="payment-form" novalidate>
+
+                <fieldset>
+                    <legend class="form-legend">Datos personales</legend>
+
+                    <div class="form-row">
+                        <div class="input-wrapper full-width">
+                            <input id="fNombre"
+                                   type="text"
+                                   class="form-input"
+                                   autocomplete="name"
+                                   placeholder=" "
+                                   required>
+                            <label for="fNombre">Nombre completo</label>
+                            <span class="error-message" id="error-fNombre" role="alert"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- CORREGIDO: id="fEmail" agregado — antes no existía y causaba null -->
+                        <div class="input-wrapper">
+                            <input id="fEmail"
+                                   type="email"
+                                   class="form-input"
+                                   autocomplete="email"
+                                   placeholder=" "
+                                   required>
+                            <label for="fEmail">Correo electrónico</label>
+                            <span class="error-message" id="error-fEmail" role="alert"></span>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <input id="fTelefono"
+                                   type="tel"
+                                   class="form-input"
+                                   autocomplete="tel"
+                                   placeholder=" "
+                                   required>
+                            <label for="fTelefono">Teléfono</label>
+                            <small class="help-text">Ej: +573001234567</small>
+                            <span class="error-message" id="error-fTelefono" role="alert"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-wrapper full-width">
+                            <input id="fDireccion"
+                                   type="text"
+                                   class="form-input"
+                                   autocomplete="street-address"
+                                   placeholder=" "
+                                   required>
+                            <label for="fDireccion">Dirección</label>
+                            <span class="error-message" id="error-fDireccion" role="alert"></span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend class="form-legend">Información de tarjeta</legend>
+
+                    <div class="form-row">
+                        <div class="input-wrapper full-width">
+                            <input id="fCard"
+                                   type="text"
+                                   class="form-input"
+                                   maxlength="19"
+                                   autocomplete="cc-number"
+                                   inputmode="numeric"
+                                   placeholder=" "
+                                   required>
+                            <label for="fCard">Número de tarjeta</label>
+                            <span class="error-message" id="error-fCard" role="alert"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-wrapper">
+                            <input id="fExpiry"
+                                   type="text"
+                                   class="form-input"
+                                   maxlength="5"
+                                   autocomplete="cc-exp"
+                                   inputmode="numeric"
+                                   placeholder="MM/AA"
+                                   required>
+                            <label for="fExpiry">Vencimiento</label>
+                            <span class="error-message" id="error-fExpiry" role="alert"></span>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <input id="fCVV"
+                                   type="password"
+                                   class="form-input"
+                                   maxlength="4"
+                                   autocomplete="cc-csc"
+                                   inputmode="numeric"
+                                   placeholder="CVV"
+                                   required>
+                            <label for="fCVV">CVV</label>
+                            <span class="error-message" id="error-fCVV" role="alert"></span>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+            <!-- Resumen de factura -->
+            <div class="factura-resumen">
+                <h3 class="resumen-title">Resumen del pedido</h3>
+                <div class="resumen-rows">
+                    <div class="resumen-row">
+                        <span>Zona</span>
+                        <span id="fZona">-</span>
+                    </div>
+                    <div class="resumen-row">
+                        <span>Cantidad</span>
+                        <span id="fCantidad">0</span>
+                    </div>
+                    <div class="resumen-row">
+                        <span>Subtotal</span>
+                        <span>$<span id="fSubtotal">0</span></span>
+                    </div>
+                    <div class="resumen-row">
+                        <span>Impuesto (19%)</span>
+                        <span>$<span id="fImpuesto">0</span></span>
+                    </div>
+                    <div class="resumen-divider"></div>
+                    <div class="resumen-row resumen-total">
+                        <span>Total</span>
+                        <span>$<span id="fTotal">0</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-buttons">
+                <button type="button" class="btn-secondary" onclick="window.cerrarFactura()">Cancelar</button>
+                <button type="button" class="btn-primary" onclick="window.procesarPago()">
+                    <i data-lucide="lock" aria-hidden="true"></i>
+                    <span>Pagar seguro</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL: VERIFICACIÓN SMS ================= -->
+    <div id="modalSMS"
+         class="modal"
+         role="dialog"
+         aria-labelledby="modalSMSTitle"
+         aria-hidden="true"
+         aria-modal="true">
+        <div class="modal-overlay" onclick="window.cerrarSMS()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon verification">
+                    <i data-lucide="smartphone" aria-hidden="true"></i>
+                </div>
+                <h2 id="modalSMSTitle">Verificación de seguridad</h2>
+                <p class="modal-subtitle">Ingresa el código de 6 dígitos que recibiste en tu teléfono</p>
+            </div>
+
+            <div class="sms-input-wrapper">
+                <input id="codigoSMS"
+                       type="text"
+                       class="form-input sms-code"
+                       maxlength="6"
+                       placeholder="000000"
+                       inputmode="numeric"
+                       autocomplete="one-time-code"
+                       aria-label="Código de 6 dígitos"
+                       required>
+            </div>
+
+            <p id="contador" class="counter-text" role="status" aria-live="polite">
+                ⏱️ Ingresa el código que recibiste por SMS...
+            </p>
+
+            <div class="modal-buttons">
+                <button type="button" class="btn-secondary" onclick="window.cerrarSMS()">Cancelar</button>
+                <button type="button" class="btn-primary" onclick="window.validarCodigo()">
+                    <i data-lucide="check" aria-hidden="true"></i>
+                    <span>Confirmar código</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL: ÉXITO / ESPERA APROBACIÓN ================= -->
+    <div id="modalSuccess"
+         class="modal"
+         role="dialog"
+         aria-labelledby="modalSuccessTitle"
+         aria-hidden="true"
+         aria-modal="true">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-success">
+            <div class="success-icon">
+                <i data-lucide="check-circle" aria-hidden="true"></i>
+            </div>
+
+            <!-- El JS cambia este texto entre "Esperando..." y "¡Confirmado!" -->
+            <h2 id="modalSuccessTitle">⏳ Esperando aprobación...</h2>
+            <p class="success-message">El operador está revisando tu código. Esto puede tardar unos segundos.</p>
+
+            <div class="success-details">
+                <div class="detail-row">
+                    <span class="detail-label">ID de transacción:</span>
+                    <strong class="detail-value" id="successTransactionId">TXN-000000</strong>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Zona:</span>
+                    <strong class="detail-value" id="successZona">-</strong>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Cantidad:</span>
+                    <strong class="detail-value" id="successCantidad">0</strong>
+                </div>
+            </div>
+
+            <div class="success-actions">
+                <button type="button" class="btn-primary full-width" onclick="window.cerrarSuccess()">
+                    <i data-lucide="download" aria-hidden="true"></i>
+                    <span>Descargar entrada</span>
+                </button>
+                <button type="button" class="btn-secondary full-width" onclick="window.print()">
+                    <i data-lucide="printer" aria-hidden="true"></i>
+                    <span>Imprimir</span>
+                </button>
+            </div>
+
+            <p class="success-footer">Revisa tu correo para más detalles de tu compra</p>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logos" aria-label="Métodos de pago y aliados">
+                <img src="{{ url_for('static', filename='logos/visa.png') }}" alt="Visa" class="footer-logo">
+                <img src="{{ url_for('static', filename='logos/mastercard.png') }}" alt="Mastercard" class="footer-logo">
+                <img src="{{ url_for('static', filename='logos/bac.png') }}" alt="BAC" class="footer-logo">
+                <img src="{{ url_for('static', filename='logos/lafise.png') }}" alt="Lafise" class="footer-logo">
+                <img src="{{ url_for('static', filename='logos/banpro.png') }}" alt="Banpro" class="footer-logo">
+                <img src="{{ url_for('static', filename='logos/todoticket.png') }}" alt="TodoTicket Nicaragua" class="footer-logo wide">
+                <img src="{{ url_for('static', filename='logos/ticketera.png') }}" alt="Ticketera Nicaragua" class="footer-logo wide">
+            </div>
+            <p>Patrocinadores oficiales y aliados afiliados · Plataforma segura de compra de entradas · Derechos reservados por Aura Tickets 2026</p>
+        </div>
+    </footer>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="{{ url_for('static', filename='textos.js') }}?v=6"></script>
+    <script src="{{ url_for('static', filename='script.js') }}?v=4"></script>
+    <script>
+        // lucide se inicializa aquí — el script.js espera a DOMContentLoaded
+        // así que lucide siempre corre ANTES que init()
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    </script>
+
+</body>
+</html>

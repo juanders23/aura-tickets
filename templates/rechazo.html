@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compra Rechazada | Aura Tickets</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='confirmacion.css') }}">
+  <style>
+    /* ── Overrides específicos para rechazo ── */
+    .icon-circle {
+      background: linear-gradient(135deg, #c0392b, #ff4444);
+      box-shadow: 0 0 30px rgba(255, 68, 68, .4);
+    }
+
+    .icon-circle svg {
+      /* La X no necesita animación de trazo, se dibuja igual */
+      stroke-dasharray: 60;
+      stroke-dashoffset: 60;
+      animation: draw .5s ease forwards .2s;
+    }
+
+    .price-red {
+      color: #ff4444;
+      font-size: 18px;
+    }
+
+    .btn.retry {
+      background: linear-gradient(135deg, #c0392b, #ff4444);
+      color: white;
+    }
+
+    .btn.retry:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(255, 68, 68, .5);
+    }
+
+    .reason-box {
+      background: rgba(255, 68, 68, .08);
+      border: 1px solid rgba(255, 68, 68, .2);
+      border-left: 3px solid #ff4444;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: #ff8888;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="confirm-container">
+
+  <!-- ÍCONO X ANIMADO -->
+  <div class="check-wrapper">
+    <div class="check-circle icon-circle">
+      <svg viewBox="0 0 52 52">
+        <!-- X: dos líneas diagonales -->
+        <path d="M16 16 L36 36 M36 16 L16 36"></path>
+      </svg>
+    </div>
+  </div>
+
+  <!-- TEXTO -->
+  <h1>Compra rechazada</h1>
+  <p class="sub">Tu transacción no pudo ser procesada</p>
+
+  <!-- CARD RESUMEN -->
+  <div class="card">
+
+    <div class="row">
+      <span>Cliente</span>
+      <strong>{{ nombre }}</strong>
+    </div>
+
+    <div class="row">
+      <span>Correo</span>
+      <strong>{{ correo }}</strong>
+    </div>
+
+    <div class="row">
+      <span>Zona</span>
+      <strong>{{ zona }}</strong>
+    </div>
+
+    <div class="row">
+      <span>Cantidad</span>
+      <strong>{{ cantidad }}</strong>
+    </div>
+
+    <div class="row">
+      <span>Total intentado</span>
+      <strong class="price-red">${{ total }}</strong>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="info">
+      ❌ Tu pago fue rechazado por el operador.<br>
+      No se realizó ningún cobro a tu cuenta.
+    </p>
+
+    <div class="reason-box">
+      💡 <strong>¿Qué puedo hacer?</strong><br>
+      Verifica tus datos de pago e intenta nuevamente.
+      Si el problema persiste, contacta a soporte.
+    </div>
+
+  </div>
+
+  <!-- BOTONES -->
+  <div class="actions">
+    <a href="/" class="btn ghost">Volver</a>
+    <a href="/" class="btn retry">Intentar de nuevo</a>
+  </div>
+
+</div>
+
+</body>
+</html>

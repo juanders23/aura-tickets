@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entradas de {{ nombre }}</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 28px;
+      font-family: Arial, sans-serif;
+      color: #f7f7f7;
+      background: radial-gradient(circle at top, #151923, #050507 65%);
+    }
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+    }
+    .header p {
+      margin: 4px 0;
+      color: #b9bcc8;
+    }
+    .tickets {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+    }
+    .ticket {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(20,24,34,.96), rgba(8,10,14,.98));
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      padding: 22px;
+      page-break-inside: avoid;
+    }
+    .ticket::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto;
+      height: 5px;
+      background: linear-gradient(90deg, #0a84ff, #00ff88);
+    }
+    .ticket-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .ticket-title {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: .5px;
+    }
+    .ticket-number {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(10,132,255,.14);
+      color: #5db2ff;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .ticket-code {
+      padding: 14px;
+      border-radius: 14px;
+      text-align: center;
+      background: rgba(255,255,255,.055);
+      border: 1px dashed rgba(255,255,255,.22);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #00ff88;
+      margin-bottom: 18px;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: 14px;
+    }
+    .row span {
+      color: #aeb3c2;
+    }
+    .row strong {
+      text-align: right;
+      word-break: break-word;
+    }
+    .footer {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #9da3b3;
+      text-align: center;
+      line-height: 1.45;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin: 24px 0;
+    }
+    .print-btn {
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 18px;
+      background: linear-gradient(135deg, #0a84ff, #00c853);
+      color: #fff;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    @media print {
+      body { background: #fff; color: #000; padding: 12px; }
+      .header p, .footer, .row span { color: #333; }
+      .ticket { box-shadow: none; border-color: #999; background: #fff; color: #000; }
+      .ticket-number { color: #000; background: #eee; }
+      .ticket-code { color: #000; border-color: #777; background: #f4f4f4; }
+      .actions { display: none; }
+    }
+    @media (max-width: 520px) {
+      body { padding: 18px 12px; }
+      .header h1 { font-size: 25px; }
+      .tickets { grid-template-columns: 1fr; }
+      .ticket { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="header">
+      <h1>Entradas compradas</h1>
+      <p>Titular: <strong>{{ nombre }}</strong></p>
+      <p>Transacción: {{ tx_id }}</p>
+    </section>
+
+    <section class="actions">
+      <button class="print-btn" onclick="window.print()">Imprimir / Guardar como PDF</button>
+    </section>
+
+    <section class="tickets">
+      {% for entrada in entradas %}
+      <article class="ticket">
+        <div class="ticket-top">
+          <h2 class="ticket-title">{{ evento.nombre if evento and evento.nombre else 'Entrada al evento' }}</h2>
+          <span class="ticket-number">Entrada {{ entrada.numero }} de {{ cantidad }}</span>
+        </div>
+
+        <div class="ticket-code">{{ entrada.codigo }}</div>
+
+        <div class="row">
+          <span>Titular</span>
+          <strong>{{ entrada.nombre }}</strong>
+        </div>
+        <div class="row">
+          <span>Correo</span>
+          <strong>{{ entrada.correo }}</strong>
+        </div>
+        <div class="row">
+          <span>Zona</span>
+          <strong>{{ entrada.zona }}</strong>
+        </div>
+        <div class="row">
+          <span>Total compra</span>
+          <strong>${{ entrada.total }}</strong>
+        </div>
+        <div class="row">
+          <span>ID compra</span>
+          <strong>{{ entrada.tx_id }}</strong>
+        </div>
+
+        <p class="footer">Presenta esta entrada al ingreso. Cada código corresponde a una entrada comprada por el titular.</p>
+      </article>
+      {% endfor %}
+    </section>
+  </main>
+</body>
+</html>
