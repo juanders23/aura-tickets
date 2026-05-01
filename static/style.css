@@ -170,6 +170,13 @@ body::before {
 .logo:hover { opacity: .8; }
 .logo i { color: var(--primary); -webkit-text-fill-color: var(--primary); font-size: 1.4rem; }
 
+.brand-logo {
+  display: block;
+  width: auto;
+  height: 46px;
+  object-fit: contain;
+}
+
 /* Nav links */
 .menu { display: flex; align-items: center; gap: .5rem; }
 

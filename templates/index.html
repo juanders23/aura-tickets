@@ -6,6 +6,7 @@
     <meta name="description" content="Aura Tickets - Compra entradas para eventos de forma segura">
     <meta name="theme-color" content="#0066cc">
     <title>Entradas | Aura Tickets 💫</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logos/aura-tickets.png') }}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,8 +23,7 @@
         <div class="container-header">
             <div class="logo-section">
                 <a href="/" class="logo" aria-label="Aura Tickets - Inicio">
-                    <i data-lucide="ticket" aria-hidden="true"></i>
-                    <span class="logo-text">Aura Tickets</span>
+                    <img src="{{ url_for('static', filename='logos/aura-tickets.png') }}" alt="Aura Tickets" class="brand-logo">
                 </a>
             </div>
 
